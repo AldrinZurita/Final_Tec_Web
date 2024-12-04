@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { ContactComponent } from './contact/contact.component';  // Ensure ContactComponent is declared
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { RegisterComponent } from './register/register.component';
   imports: [
     BrowserModule,
     FormsModule,  // Add FormsModule to the imports array
+    HttpClientModule,
     routes,
   ],
   providers: [],
