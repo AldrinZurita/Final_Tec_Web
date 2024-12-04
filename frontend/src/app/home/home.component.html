@@ -3,16 +3,16 @@
     <div class="hero">
       <div class="hero-content">
         <h1>Bienvenido a Espacios Bolivia</h1>
-        <p>Facilitando el acceso a espacios públicos para todos.</p>
-        <div class="hero-buttons">
+        <!-- <p>Facilitando el acceso a espacios públicos para todos.</p> -->
+        <!-- <div class="hero-buttons">
           <button class="cta" (click)="scrollTo('highlights')">Explorar</button>
           <button class="cta secondary" (click)="scrollTo('gallery')">Galería</button>
-        </div>
+        </div> -->
       </div>
     </div>
   
     <!-- Sección de características -->
-    <section id="highlights" class="highlights">
+    <!-- <section id="highlights" class="highlights">
       <h2 class="section-title">¿Qué ofrecemos?</h2>
       <div class="highlights-list">
         <div *ngFor="let item of highlights" class="highlight-card">
@@ -21,14 +21,15 @@
           <p>{{ item.description }}</p>
         </div>
       </div>
-    </section>
+    </section> -->
   
     <!-- Galería de imágenes -->
     <section id="gallery" class="gallery">
-      <h2 class="section-title">Espacios Destacados</h2>
+      <h2 class="section-title">Espacios Disponibles</h2>
       <div class="carousel">
         <div *ngFor="let image of galleryImages" class="carousel-item">
           <img [src]="image" alt="Espacio destacado" />
+          <p class="nombre-espacio">Nombre del Lugar</p>
         </div>
       </div>
     </section>

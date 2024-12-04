@@ -12,10 +12,17 @@ import { CommonModule } from '@angular/common';
 export class RegisterComponent {
   // Datos del formulario
   registerData = {
-    email: '',
-    password: '',
-    confirmPassword: ''
-  };
+        ci: '',
+        nombre: '',
+        ap_paterno: '',
+        ap_materno: '',
+        email: '',
+        password: '',
+        confirmPassword: '',
+        direccion: '',
+        telefono: '',
+        id_rol: '',
+      };
 
   // Método para manejar el envío del formulario de registro
   onRegisterSubmit() {
