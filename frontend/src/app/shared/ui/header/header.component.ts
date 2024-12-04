@@ -9,5 +9,4 @@ import { RouterLink } from '@angular/router';
   styles: ``
 })
 export class HeaderComponent {
-
 }
