@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { Usuario } from '../../entities/usuario.entity';
@@ -23,10 +23,27 @@ export class UsuarioService {
   }
 
   async update(id: number, usuario: Partial<Usuario>): Promise<void> {
+    const result = await this.usuarioRepository.update(id, usuario);
+    if (result.affected === 0) {
+      throw new NotFoundException(`Usuario con id ${id} no encontrado`);
+    }
+  }
+
+  async updatePartial(id: number, usuario: Partial<Usuario>): Promise<void> {
+    const existingUsuario = await this.usuarioRepository.findOneBy({ ci_usuario: id });
+
+    if (!existingUsuario) {
+      throw new NotFoundException(`Usuario con id ${id} no encontrado`);
+    }
+
+    // Actualizar únicamente los campos enviados en el body
     await this.usuarioRepository.update(id, usuario);
   }
 
   async delete(id: number): Promise<void> {
-    await this.usuarioRepository.delete(id);
+    const result = await this.usuarioRepository.delete(id);
+    if (result.affected === 0) {
+      throw new NotFoundException(`Usuario con id ${id} no encontrado`);
+    }
   }
 }
