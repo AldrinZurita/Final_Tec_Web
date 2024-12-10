@@ -1,0 +1,76 @@
+.table-container {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background: #2e2e2e; /* Fondo oscuro similar al formulario */
+    border-radius: 12px; /* Bordes redondeados */
+    border: 1px solid #2f85ac; /* Borde azul claro */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra para profundidad */
+  }
+  
+  h2 {
+    text-align: center;
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    color: #ffffff;
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #2e2e2e; /* Fondo oscuro */
+    border-radius: 12px; /* Bordes redondeados */
+    overflow: hidden; /* Aplica el radio en bordes */
+  }
+  
+  thead {
+    background-color: #2f85ac; /* Azul del formulario */
+    color: white;
+  }
+  
+  th, td {
+    padding: 1rem;
+    text-align: left;
+    border-bottom: 1px solid #4a4949; /* Línea de separación tenue */
+  }
+  
+  th {
+    font-size: 1rem;
+    font-weight: 600;
+    text-transform: uppercase;
+  }
+  
+  tbody tr:nth-child(even) {
+    background-color: #4a4949; /* Alternancia en filas */
+  }
+  
+  tbody tr:hover {
+    background-color: #206b8c; /* Azul más oscuro al hover */
+    cursor: pointer;
+  }
+  
+  td {
+    font-size: 0.9rem;
+    color: #ffffff;
+  }
+  
+  button {
+    padding: 0.6rem 1rem;
+    background-color: #2f85ac;
+    color: white;
+    font-size: 0.9rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  button:hover {
+    background-color: #206b8c; /* Azul más oscuro */
+  }
+  
+  button:disabled {
+    background-color: #2f85ac;
+    cursor: not-allowed;
+  }
+  

@@ -9,4 +9,6 @@ import { HeaderComponent } from './shared/ui/header/header.component';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
-export class AppComponent {}
+export class AppComponent {
+  title = 'frontend';
+}
