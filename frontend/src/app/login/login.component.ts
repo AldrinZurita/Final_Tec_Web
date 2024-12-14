@@ -1,11 +1,13 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router'; // Agregar RouterModule
+
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [FormsModule,CommonModule], // Importar FormsModule aquí para habilitar ngModel
+  imports: [FormsModule,CommonModule, RouterModule], // Importar FormsModule aquí para habilitar ngModel
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
 })
@@ -40,6 +42,8 @@ export class LoginComponent {
   toggleRegister() {
     this.isRegistering = !this.isRegistering;
   }
+
+
 }
 
 

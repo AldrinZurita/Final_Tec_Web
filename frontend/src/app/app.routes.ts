@@ -4,6 +4,8 @@ import { NosotrosComponent } from './nosotros/nosotros.component';
 import { ContactComponent } from './contact/contact.component';
 import { HomeComponent } from './home/home.component';
 import { RegisterComponent } from './register/register.component';
+import { EventosComponent } from './eventos/eventos.component';
+import { UsuariosComponent } from './usuarios/usuarios.component';
 
 export const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -12,5 +14,7 @@ export const routes: Routes = [
   { path: 'nosotros', component: NosotrosComponent },
   { path: 'contact', component: ContactComponent },
   { path: '', component: LoginComponent },
-  { path: 'register', component: RegisterComponent}
+  { path: 'register', component: RegisterComponent},
+  {path: 'usuarios', component: UsuariosComponent},
+  {path: 'eventos', component: EventosComponent}
 ];
