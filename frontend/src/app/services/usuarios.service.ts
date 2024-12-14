@@ -1,32 +1,45 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { AxiosService } from './axios.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class UsuariosService {
-  private apiUrl = 'http://localhost:3000/usuarios';
+  private readonly apiUrl = '/usuarios';
 
-  constructor(private http: HttpClient) {}
+  constructor(private axiosService: AxiosService) {}
+  
 
-  findAll(): Observable<any[]> {
-    return this.http.get<any[]>(`${this.apiUrl}`);
+  async getUsuarios() {
+    try {
+      const response = await this.axiosService.getAxiosInstance().get(this.apiUrl);
+      return response.data;
+    } catch (error: any) {
+      console.error('Error al obtener usuarios:', error.response?.data || error.message);
+      throw error;
+    }
   }
 
-  findOne(id: number): Observable<any> {
-    return this.http.get<any>(`${this.apiUrl}/${id}`);
+  async createUsuario(data: { ci_usuario: number; nombre: string; ap_paterno:string; ap_materno:string;  email: string; contrasena: string; direccion: string; telefono: string }) {
+    try {
+      const response = await this.axiosService.getAxiosInstance().post(this.apiUrl, data);
+      return response.data;
+    } catch (error: any) {
+      console.error('Error al crear usuario:', error.response?.data || error.message);
+      throw error;
+    }
   }
 
-  create(usuarioData: Partial<any>): Observable<any> {
-    return this.http.post<any>(`${this.apiUrl}`, usuarioData);
-  }
-
-  update(id: number, usuarioData: Partial<any>): Observable<void> {
-    return this.http.put<void>(`${this.apiUrl}/${id}`, usuarioData);
-  }
-
-  delete(id: number): Observable<void> {
-    return this.http.delete<void>(`${this.apiUrl}/${id}`);
+  async updateUsuarioDatos(ci_usuario: number, data: any) {
+    try {
+      const response = await this.axiosService.getAxiosInstance().patch(
+        `${this.apiUrl}/${ci_usuario}`,
+        data
+      );
+      return response.data;
+    } catch (error: any) {
+      console.error('Error al actualizar datos del usuario:', error.response?.data || error.message);
+      throw error;
+    }
   }
 }

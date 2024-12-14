@@ -3,12 +3,12 @@
     <h2><b>Registrarse</b></h2>
     <form (ngSubmit)="onRegisterSubmit()" #registerForm="ngForm">
       <div>
-        <label for="ci">CI:</label>
+        <label for="ci_usuario">CI:</label>
         <input
           type="text"
-          id="ci"
-          name="ci"
-          [(ngModel)]="registerData.ci"
+          id="ci_usuario"
+          name="ci_usuario"
+          [(ngModel)]="registerData.ci_usuario"
           required
         />
       </div>
@@ -89,15 +89,6 @@
           id="telefono"
           name="telefono"
           [(ngModel)]="registerData.telefono"
-          required
-        />
-      </div>
-      <div>
-        <label for="id_rol">Rol:</label>
-        <input
-          id="id_rol"
-          name="id_rol"
-          [(ngModel)]="registerData.id_rol"
           required
         />
       </div>

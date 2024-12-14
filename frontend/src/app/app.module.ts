@@ -8,6 +8,7 @@ import { ContactComponent } from './contact/contact.component';  // Ensure Conta
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { HttpClientModule } from '@angular/common/http';
+import { AxiosService } from './services/axios/axios.service';
 
 @NgModule({
   declarations: [
