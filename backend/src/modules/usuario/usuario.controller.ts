@@ -1,6 +1,7 @@
-import { Controller, Get, Post, Put, Delete, Body, Param } from '@nestjs/common';
+import { Controller, Get, Post, Put, Delete, Body, Param, ParseIntPipe, Patch } from '@nestjs/common';
 import { UsuarioService } from './usuario.service';
 import { Usuario } from '../../entities/usuario.entity';
+
 
 @Controller('usuarios')
 export class UsuarioController {
@@ -21,13 +22,20 @@ export class UsuarioController {
     return this.usuarioService.create(usuarioData);
   }
 
-  @Put(':id')
-  update(@Param('id') id: number, @Body() usuarioData: Partial<Usuario>): Promise<void> {
+  @Patch(':id')
+  async update(@Param('id') id: number, @Body() usuarioData: Partial<Usuario>): Promise<void> {
     return this.usuarioService.update(id, usuarioData);
   }
 
+//   @Patch(':id')
+// async update(@Param('id') id: number, @Body() updateUsuarioDto: UpdateUsuarioDto) {
+//   return this.usuarioService.update(id, updateUsuarioDto);
+// }
+  
   @Delete(':id')
-  delete(@Param('id') id: number): Promise<void> {
-    return this.usuarioService.delete(id);
-  }
+  async delete(@Param('id', ParseIntPipe) id: number): Promise<void> {
+  console.log('ID recibido para eliminar:', id); // Verifica qué ID llega
+  return this.usuarioService.delete(id);
+}
+
 }

@@ -55,8 +55,6 @@ export class RegisterComponent {
   
         localStorage.setItem('ci_usuario', response.ci_usuario.toString());
   
-        //redirigir
-        this.router.navigate(['/home']);
       } catch (error) {
         console.error('Error al registrar usuario:', error);
       }

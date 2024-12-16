@@ -2,14 +2,18 @@ import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { Usuario } from '../../entities/usuario.entity';
+import { PipeTransform, ArgumentMetadata } from '@nestjs/common';
+
 
 @Injectable()
 export class UsuarioService {
+
+
   constructor(
     @InjectRepository(Usuario)
-    private usuarioRepository: Repository<Usuario>,
+    private readonly usuarioRepository: Repository<Usuario>,
   ) {}
-
+  
   async findAll(): Promise<Usuario[]> {
     return this.usuarioRepository.find();
   }
@@ -40,10 +44,13 @@ export class UsuarioService {
     await this.usuarioRepository.update(id, usuario);
   }
 
+
   async delete(id: number): Promise<void> {
-    const result = await this.usuarioRepository.delete(id);
-    if (result.affected === 0) {
+    const usuario = await this.usuarioRepository.delete(id);
+    if (!usuario) {
       throw new NotFoundException(`Usuario con id ${id} no encontrado`);
     }
+    await this.usuarioRepository.delete(id);
   }
+
 }

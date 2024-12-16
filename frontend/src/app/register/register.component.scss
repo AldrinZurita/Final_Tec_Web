@@ -1,5 +1,10 @@
-
 .form-container {
+  // background-image:url('https://www.globalnationalparks.com/es/wp-content/uploads/parque-nacional-tunari.jpg');
+  // background-position: center;
+  // background-attachment: fixed;
+  // background-size: cover;
+  // height: 100vh;
+
   display: flex;
   justify-content: space-between;
   gap: 2rem;
@@ -8,12 +13,22 @@
 }
 
 .register-container {
+  
+
+  background-image:url('https://www.globalnationalparks.com/es/wp-content/uploads/parque-nacional-tunari.jpg');
+
+  background-position: center;
+  background-attachment: fixed;
+  background-size: cover;
+
+
+
   max-width: 50vw;
   margin: 3rem auto;
   padding: 2rem;
-  background: #2e2e2e;
+  background: rgba(45, 45, 45, 0.8);
   border-radius: 12px;
-  border: 1px solid #2f85ac;
+  border: 1px solid rgba(22, 48, 135, 0.7);
   flex: 1;
 }
 
@@ -22,20 +37,20 @@ h2 {
   font-size: 1.5rem;
   margin-bottom: 1.5rem;
   color: #ffffff;
-  background-color: #2e2e2e;
+  
 }
 
 form {
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
-  background-color: #2e2e2e;
+  
 }
 
 div {
   display: flex;
   flex-direction: column;
-  background-color: #2e2e2e;
+  
 }
 
 label {
@@ -43,13 +58,13 @@ label {
   font-weight: 600;
   color: #ffffff;
   margin-bottom: 0.5rem;
-  background-color: #2e2e2e;
+  
 }
 
 input, select {
   padding: 0.8rem;
   font-size: 1rem;
-  border: 1px solid #2f85ac;
+  border: 1px solid rgba(22, 48, 135, 0.7);
   border-radius: 8px;
   background-color: #4a4949;
   transition: border-color 3s ease;
@@ -63,7 +78,7 @@ input:focus, select:focus {
 
 button {
   padding: 0.8rem;
-  background-color: #2f85ac;
+  background-color: rgba(22, 48, 135, 0.7);
   color: white;
   font-size: 1rem;
   border: none;
@@ -78,14 +93,14 @@ button:hover {
 }
 
 button:disabled {
-  background-color: #2f85ac;
+  background-color: rgba(22, 48, 135, 0.7);
   cursor: not-allowed;
 }
 
 .register-link {
   text-align: center;
   margin-top: 1rem;
-  background-color: #2e2e2e;
+  
 }
 
 .register-link p {
@@ -94,7 +109,7 @@ button:disabled {
 }
 
 .register-link a {
-  color: #2f85ac;
+  color: rgba(22, 48, 135, 0.7);
   text-decoration: none;
   font-weight: 600;
   transition: color 0.3s ease;

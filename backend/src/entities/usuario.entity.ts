@@ -27,7 +27,4 @@ export class Usuario {
   @Column({ length: 20 })
   telefono: string;
 
-  @ManyToOne(() => Role)
-  @JoinColumn({ name: 'id_rol' })
-  id_rol: Role;
 }

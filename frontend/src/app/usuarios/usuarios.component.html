@@ -1,1 +1,67 @@
-<p>usuarios works!</p>
+<section class="usuarios-container">
+  <h3>Lista de Usuarios</h3>
+  <div class="search-container">
+    <label for="searchCi">Buscar por CI:</label>
+    <input
+    id="searchCi"
+    [(ngModel)]="searchCi"
+    (input)="findUsuario()"
+    placeholder="Ingresa el CI"
+    />
+    <button class="btn btn-search" (click)="findUsuario()">Buscar</button>
+  </div>
+
+  <table *ngIf="usuariosFiltrados.length > 0" class="usuarios-table">
+    <thead>
+      <tr>
+        <th>CI</th>
+        <th>Nombre</th>
+        <th>Ap_Paterno</th>
+        <th>Ap_Materno</th>
+        <th>Email</th>
+        <th>Teléfono</th>
+        <th>Direccion</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let usuario of usuariosFiltrados; let i = index">
+        <td (click)="editField(i, 'ci_usuario')">
+          <input *ngIf="isEditing[i]?.ci_usuario" [(ngModel)]="usuario.ci_usuario" (blur)="stopEditing(i, 'ci_usuario')"/>
+          <span *ngIf="!isEditing[i]?.ci_usuario">{{ usuario.ci_usuario }}</span>
+        </td>
+        <td (click)="editField(i, 'nombre')">
+          <input *ngIf="isEditing[i]?.nombre" [(ngModel)]="usuario.nombre" (blur)="stopEditing(i, 'nombre')"/>
+          <span *ngIf="!isEditing[i]?.nombre">{{ usuario.nombre }}</span>
+        </td>
+        <td (click)="editField(i,'ap_paterno')">
+          <input *ngIf="isEditing[i]?.ap_paterno"[(ngModel)]="usuario.ap_paterno" (blur)="stopEditing(i, 'ap_paterno')"/>
+          <span *ngIf="!isEditing[i]?.ap_paterno">{{usuario.ap_paterno}}</span>
+        </td>
+        <td (click)="editField(i,'ap_materno')">
+          <input *ngIf="isEditing[i]?.ap_materno"[(ngModel)]="usuario.ap_materno"   (blur)="stopEditing(i, 'ap_materno')"/>
+          <span *ngIf="!isEditing[i]?.ap_materno">{{usuario.ap_materno}}</span>
+        </td>
+        <td (click)="editField(i, 'email')">
+          <input *ngIf="isEditing[i]?.email" [(ngModel)]="usuario.email"(blur)="stopEditing(i, 'email')"/>
+          <span *ngIf="!isEditing[i]?.email">{{ usuario.email }}</span>
+        </td>
+        <td (click)="editField(i, 'telefono')">
+          <input *ngIf="isEditing[i]?.telefono" [(ngModel)]="usuario.telefono"  (blur)="stopEditing(i, 'telefono')"/>
+          <span *ngIf="!isEditing[i]?.telefono">{{ usuario.telefono }}</span>
+        </td>
+        <td (click)="isEditing(i,'direccion')">
+          <input *ngIf="isEditing[i]?.direccion"[(ngModel)]="usuario.direccion"  (blur)="stopEditing(i, 'direccion')"/>
+          <span *ngIf="!isEditing[i]?.direccion">{{usuario.direccion}}</span>
+        <td>
+          <button class="btn btn-delete" (click)="deleteUsuario(usuario.ci_usuario)">Eliminar</button>
+          <button class="btn btn-update" (click)="updateUsuario(usuario.ci_usuario, usuario)">Actualizar</button>
+        </td>
+      </tr>
+    </tbody>
+
+  </table>
+  <p *ngIf="usuariosFiltrados.length === 0">No se encontraron usuarios.</p>
+</section>
+
+  
