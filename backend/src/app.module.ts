@@ -22,15 +22,21 @@ import { ReservaModule } from './modules/reserva/reserva.module';
     TypeOrmModule.forRootAsync({
       imports: [ConfigModule],
       useFactory: (configService: ConfigService) => ({
-        type: 'mysql',
+        type: 'postgres', // Cambiado de 'mysql' a 'postgres'
         host: configService.get<string>('DB_HOST'),
         port: configService.get<number>('DB_PORT'),
         username: configService.get<string>('DB_USERNAME'),
         password: configService.get<string>('DB_PASSWORD'),
         database: configService.get<string>('DB_DATABASE'),
         entities: [__dirname + '/**/*.entity{.ts,.js}'],
-        synchronize: true, // En producción puedes desactivar esto
-        logging: ['query', 'error'],
+        synchronize: true, // Cambia a false en producción para mayor seguridad
+        logging: ['query', 'error'], // Activa el log de consultas y errores
+        ssl: true, // Requerido por Render para conexiones seguras con PostgreSQL
+        extra: {
+          ssl: {
+            rejectUnauthorized: false, // Necesario si usas certificados autogenerados
+          },
+        },
       }),
       inject: [ConfigService],
     }),
