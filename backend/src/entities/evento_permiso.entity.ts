@@ -18,6 +18,6 @@ export class EventoPermiso {
   @JoinColumn({ name: 'id_permiso' })
   permiso: Permiso;
 
-  @Column({ type: 'blob' })
+  @Column({ type: 'bytea' }) // Cambiado de blob a bytea
   documento: Buffer;
 }

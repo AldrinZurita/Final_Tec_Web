@@ -13,6 +13,6 @@ export class Empresa {
   @Column({ length: 100 })
   empresa: string;
 
-  @Column({ type: 'blob' })
+  @Column({ type: 'bytea' }) // Cambiado de blob a bytea
   documento: Buffer;
 }

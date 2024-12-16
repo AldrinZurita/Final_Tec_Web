@@ -13,6 +13,6 @@ export class PresidenteOtb {
   @Column({ length: 100 })
   otb: string;
 
-  @Column({ type: 'blob' })
+  @Column({ type: 'bytea' }) // Cambiado de blob a bytea
   documento: Buffer;
 }

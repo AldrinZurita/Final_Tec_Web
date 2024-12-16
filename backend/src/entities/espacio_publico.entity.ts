@@ -20,5 +20,3 @@ export class EspacioPublico {
   @Column({ length: 255 })
   direccion: string;
 }
-
-// Deberia ser datos estaticos
