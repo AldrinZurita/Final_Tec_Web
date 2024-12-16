@@ -14,19 +14,19 @@ import { EspacioPublicoModule } from './modules/espacio-publico/espacio-publico.
   imports: [
     TypeOrmModule.forRoot({
       type: 'mysql',
-      host: '127.0.0.1',
-      port: 3306,
-      username: 'appuser',
-      password: 'app_password',
-      database: 'proyecto_sisinfo',
+      host: process.env.DATABASE_HOST || '127.0.0.1',
+      port: parseInt(process.env.DATABASE_PORT, 10) || 3306,
+      username: process.env.DATABASE_USER || 'appuser',
+      password: process.env.DATABASE_PASSWORD || 'app_password',
+      database: process.env.DATABASE_NAME || 'proyecto_sisinfo',
       entities: [__dirname + '/**/*.entity{.ts,.js}'],
-      synchronize: true,
-      logging: ['query', 'error'],
+      synchronize: process.env.TYPEORM_SYNC === 'true', // Por defecto, false
+      logging: process.env.DATABASE_LOGGING === 'true' ? ['query', 'error'] : false,
     }),
     UsuarioModule,
     PermisoModule,
-    EventoModule, // Asegúrate de importar el módulo de Evento
-    PresidenteOtbModule, // Asegúrate de importar el módulo de PresidenteOtb
+    EventoModule,
+    PresidenteOtbModule,
     EmpresaModule,
     EventoPermisoModule,
     ReservaModule,
