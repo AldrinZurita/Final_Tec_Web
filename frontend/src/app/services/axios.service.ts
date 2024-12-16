@@ -10,7 +10,7 @@ export class AxiosService {
   constructor() {
 
     this.axiosInstance = axios.create({
-      baseURL: 'http://localhost:3000',
+      baseURL: 'https://backend-service-name.onrender.com',
       headers: {
         'Content-Type': 'application/json',
       },
