@@ -1,5 +1,6 @@
 {
   "devDependencies": {
+    "@nestjs/cli": "^10.4.9",
     "tailwindcss": "^3.4.15"
   }
 }
