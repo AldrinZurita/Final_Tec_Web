@@ -7,6 +7,8 @@ import { PresidenteOtbModule } from './modules/presidente_otb/presidente_otb.mod
 import { EmpresaModule } from './modules/empresa/empresa.module';
 import { EventoPermisoModule } from './modules/evento-permiso/evento-permiso.module';
 import { ReservaModule } from './modules/reserva/reserva.module';
+import { EspacioPublicoModule } from './modules/espacio-publico/espacio-publico.module';
+
 
 @Module({
   imports: [
@@ -28,6 +30,7 @@ import { ReservaModule } from './modules/reserva/reserva.module';
     EmpresaModule,
     EventoPermisoModule,
     ReservaModule,
+    EspacioPublicoModule
   ],
 })
 export class AppModule {}

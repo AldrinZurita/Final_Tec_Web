@@ -1,0 +1,16 @@
+<h1>Espacios Disponibles</h1>
+<div class="card-container">
+    <div class="card" *ngFor="let espacio of espaciosPublicos">
+
+      <img [src]="espacio.descripcion" alt="Imagen del espacio público" class="card-img">
+      <!-- Contenido -->
+      <div class="card-content">
+        <h3 class="card-title">{{ espacio.nombre }}</h3>
+        <p><strong>Dirección:</strong> {{ espacio.direccion }}</p>
+        <p><strong>Latitud:</strong> {{ espacio.latitud }}</p>
+        <p><strong>Longitud:</strong> {{ espacio.longitud }}</p>
+        <button class="btn btn-delete" (click)="deleteEspacioPublico(espacio.id)">Eliminar</button>
+      </div>
+    </div>
+</div>
+  

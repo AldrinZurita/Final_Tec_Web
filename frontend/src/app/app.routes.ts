@@ -6,6 +6,7 @@ import { HomeComponent } from './home/home.component';
 import { RegisterComponent } from './register/register.component';
 import { EventosComponent } from './eventos/eventos.component';
 import { UsuariosComponent } from './usuarios/usuarios.component';
+import { EspaciosPublicosComponent } from './espacios-publicos/espacios-publicos.component';
 
 export const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -16,5 +17,6 @@ export const routes: Routes = [
   { path: '', component: LoginComponent },
   { path: 'register', component: RegisterComponent},
   {path: 'eventos', component: EventosComponent},
-  {path: 'usuarios', component: UsuariosComponent}
+  {path: 'usuarios', component: UsuariosComponent},
+  {path: 'espacios-publicos', component: EspaciosPublicosComponent}
 ];
