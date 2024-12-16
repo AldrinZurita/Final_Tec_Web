@@ -22,6 +22,11 @@ import { EspacioPublicoModule } from './modules/espacio-publico/espacio-publico.
       entities: [__dirname + '/**/*.entity{.ts,.js}'],
       synchronize: process.env.TYPEORM_SYNC === 'true', // Por defecto, false
       logging: process.env.DATABASE_LOGGING === 'true' ? ['query', 'error'] : false,
+      extra: {
+        ssl: {
+          rejectUnauthorized: false, // Necesario si no usas un certificado firmado.
+        },
+      },
     }),
     UsuarioModule,
     PermisoModule,
