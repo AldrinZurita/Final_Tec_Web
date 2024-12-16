@@ -14,11 +14,11 @@ import { EspacioPublicoModule } from './modules/espacio-publico/espacio-publico.
   imports: [
     TypeOrmModule.forRoot({
       type: 'mysql',
-      host: process.env.DATABASE_HOST || '127.0.0.1',
-      port: parseInt(process.env.DATABASE_PORT, 10) || 3306,
-      username: process.env.DATABASE_USER || 'appuser',
-      password: process.env.DATABASE_PASSWORD || 'app_password',
-      database: process.env.DATABASE_NAME || 'proyecto_sisinfo',
+      host: process.env.DATABASE_HOST,
+      port: parseInt(process.env.DATABASE_PORT, 10),
+      username: process.env.DATABASE_USER ,
+      password: process.env.DATABASE_PASSWORD,
+      database: process.env.DATABASE_NAME,
       entities: [__dirname + '/**/*.entity{.ts,.js}'],
       synchronize: process.env.TYPEORM_SYNC === 'true', // Por defecto, false
       logging: process.env.DATABASE_LOGGING === 'true' ? ['query', 'error'] : false,
