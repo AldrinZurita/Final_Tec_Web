@@ -2,6 +2,9 @@ import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 
+import { AppController } from './app.controller'; // Importa el AppController
+import { AppService } from './app.service'; // Importa el AppService
+
 import { UsuarioModule } from './modules/usuario/usuario.module';
 import { PermisoModule } from './modules/permiso/permiso.module';
 import { EventoModule } from './modules/evento/evento.module';
@@ -12,36 +15,34 @@ import { ReservaModule } from './modules/reserva/reserva.module';
 
 @Module({
   imports: [
-    // Importa ConfigModule para usar variables de entorno
     ConfigModule.forRoot({
-      isGlobal: true, // Hace que las variables estén disponibles en toda la aplicación
-      envFilePath: '.env', // Archivo donde están las variables de entorno
+      isGlobal: true,
+      envFilePath: '.env',
     }),
 
-    // Configuración dinámica de TypeORM usando ConfigService
     TypeOrmModule.forRootAsync({
       imports: [ConfigModule],
       useFactory: (configService: ConfigService) => ({
-        type: 'postgres', // Cambiado de 'mysql' a 'postgres'
+        type: 'postgres',
         host: configService.get<string>('DB_HOST'),
         port: configService.get<number>('DB_PORT'),
         username: configService.get<string>('DB_USERNAME'),
         password: configService.get<string>('DB_PASSWORD'),
         database: configService.get<string>('DB_DATABASE'),
         entities: [__dirname + '/**/*.entity{.ts,.js}'],
-        synchronize: true, // Cambia a false en producción para mayor seguridad
-        logging: ['query', 'error'], // Activa el log de consultas y errores
-        ssl: true, // Requerido por Render para conexiones seguras con PostgreSQL
+        synchronize: true,
+        logging: ['query', 'error'],
+        ssl: true,
         extra: {
           ssl: {
-            rejectUnauthorized: false, // Necesario si usas certificados autogenerados
+            rejectUnauthorized: false,
           },
         },
       }),
       inject: [ConfigService],
     }),
 
-    // Importa tus módulos existentes
+    // Módulos existentes
     UsuarioModule,
     PermisoModule,
     EventoModule,
@@ -50,5 +51,7 @@ import { ReservaModule } from './modules/reserva/reserva.module';
     EventoPermisoModule,
     ReservaModule,
   ],
+  controllers: [AppController], // Registra AppController
+  providers: [AppService], // Registra AppService
 })
 export class AppModule {}
