@@ -7,6 +7,7 @@ async function bootstrap() {
   app.enableCors({
     origin: 'https://final-tec-web-1.onrender.com',
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+    allowedHeaders: 'Content-Type, Authorization',
     credentials: true,
   });
   await app.listen(process.env.PORT ?? 3000);
