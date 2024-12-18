@@ -9,20 +9,35 @@ import { EventoPermisoModule } from './modules/evento-permiso/evento-permiso.mod
 import { ReservaModule } from './modules/reserva/reserva.module';
 import { EspacioPublicoModule } from './modules/espacio-publico/espacio-publico.module';
 
+import {DB_HOST, DB_USER, DB_DATABASE, DB_PASSWORD,DB_PORT} from './config'
+
 
 @Module({
   imports: [
     TypeOrmModule.forRoot({
       type: 'mysql',
-      host: '127.0.0.1',
-      port: 3306,
-      username: 'appuser',
-      password: 'app_password',
-      database: 'proyecto_sisinfo',
+      host: DB_HOST,
+      port: DB_PORT,
+      username: DB_USER,
+      password: DB_PASSWORD,
+      database: DB_DATABASE,
       entities: [__dirname + '/**/*.entity{.ts,.js}'],
       synchronize: true,
       logging: ['query', 'error'],
     }),
+
+    // TypeOrmModule.forRoot({
+    //   type: 'mysql',
+    //   host: '127.0.0.1',
+    //   port: 3306,
+    //   username: 'appuser',
+    //   password: 'app_password',
+    //   database: 'proyecto_sisinfo',
+    //   entities: [__dirname + '/**/*.entity{.ts,.js}'],
+    //   synchronize: true,
+    //   logging: ['query', 'error'],
+    // }),
+
     UsuarioModule,
     PermisoModule,
     EventoModule, // Asegúrate de importar el módulo de Evento
