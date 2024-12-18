@@ -10,10 +10,11 @@ export class AxiosService {
   constructor() {
 
     this.axiosInstance = axios.create({
-      baseURL: 'https://final-tec-web-76vo.onrender.com',
+      baseURL: 'https://final-tec-web-2-n87q.onrender.com',
       headers: {
         'Content-Type': 'application/json',
       },
+      withCredentials: true,
     });
   }
 
